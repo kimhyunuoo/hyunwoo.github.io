@@ -1,3 +1,54 @@
 * {
   box-sizing: border-box;
 }
+body {
+  background-image: url("../image/richard-horvath-RAZU_R66vUc-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* TITLE NAME SECTION */
+.form_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_input__container {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  width: 600px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.material-symbols-outlined {
+  margin-right: 5px;
+  color: #888888;
+  font-size: 35px;
+}
+
+.form_input__whatName {
+  font-size: 22px;
+  color: #9a9a9a;
+  flex: 1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 10px 10px;
+}
+.form_input__whatName::placeholder {
+  color: #dadada;
+}
