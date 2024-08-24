@@ -70,7 +70,15 @@ body {
 .dockBar .dockBar__todolist {
   width: 60px;
   height: 60px;
-  background-color: #fff;
   border-radius: 15px;
   margin: 0 10px;
+}
+.dockBar .dockBar__time {
+  background: url("../images/clock.svg");
+}
+.dockBar .dockBar__weather {
+  background: url("../images/weather.svg");
+}
+.dockBar .dockBar__todolist {
+  background: url("../images/calendar.svg");
 }
