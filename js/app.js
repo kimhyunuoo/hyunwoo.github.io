@@ -9,6 +9,7 @@ const dockTimeScreenEl = document.querySelector(".dockBar_timeScreen");
 // WEATHER
 const weatherEl = document.querySelector(".dockBar__weather");
 const dockWeatherScreenEl = document.querySelector(".dockBar_weatherScreen");
+const API_KEY = "a3a5d593038ea39027a6962fdf659257";
 
 // Background Change ---> input 연결
 let toggle = true;
@@ -65,11 +66,37 @@ function bodyWindowWeather() {
     dockWeatherScreenEl.classList.add("active");
   } else {
     dockWeatherScreenEl.classList.remove("active");
-    dockWeatherScreenEl.innerHTML = "";
   }
+}
+function onGeoOk(position) {
+  const lat = position.coords.latitude;
+  const lng = position.coords.longitude;
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=metric`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const weatherEl = document.querySelector(".dockBar_weatherScreen .wea");
+      const cityEl = document.querySelector(".dockBar_weatherScreen .city");
+      const maxtempEl = document.querySelector(
+        ".dockBar_weatherScreen .maxtem"
+      );
+      const mintempEl = document.querySelector(
+        ".dockBar_weatherScreen .mintem"
+      );
+      cityEl.innerText = data.name;
+      weatherEl.innerText = data.weather[0].main;
+      const max = data.main.temp_max;
+      maxtempEl.innerText = `최고온도 : ${max}°C`;
+      const min = data.main.temp_min;
+      mintempEl.innerText = `최저온도 : ${min}°C`;
+    });
+}
+function onGeoError() {
+  alert("Can't find you. No weather for you.");
 }
 // Event Trigger
 inputEl.addEventListener("keydown", inputChange);
 inputEl.addEventListener("keydown", bodyWindowChange);
 timeEl.addEventListener("click", bodyWindowPress);
 weatherEl.addEventListener("click", bodyWindowWeather);
+navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);

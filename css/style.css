@@ -138,10 +138,15 @@ body {
 }
 .dockBar_weatherScreen {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   top: 350px;
   right: 0;
   width: 500px;
-  height: 700px;
+  height: 250px;
+  font-size: 28px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   opacity: 0;
@@ -149,6 +154,7 @@ body {
 }
 .dockBar_weatherScreen.active {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 1;
