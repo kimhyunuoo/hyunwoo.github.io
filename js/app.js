@@ -6,6 +6,9 @@ const outPutValueEl = document.querySelector(".outputValue");
 // TIME
 const timeEl = document.querySelector(".dockBar__time");
 const dockTimeScreenEl = document.querySelector(".dockBar_timeScreen");
+// WEATHER
+const weatherEl = document.querySelector(".dockBar__weather");
+const dockWeatherScreenEl = document.querySelector(".dockBar_weatherScreen");
 
 // Background Change ---> input 연결
 let toggle = true;
@@ -55,6 +58,18 @@ function bodyWindowPress() {
 intervalId = setInterval(() => {
   dockTimeScreenEl.querySelector(".time-display").textContent = updateTime();
 }, 1000);
+// dockWeatherScreen section
+function bodyWindowWeather() {
+  dockWeatherScreenEl.classList.toggle(".active");
+  if (dockWeatherScreenEl.classList.contains(".active")) {
+    dockWeatherScreenEl.classList.add("active");
+  } else {
+    dockWeatherScreenEl.classList.remove("active");
+    dockWeatherScreenEl.innerHTML = "";
+  }
+}
+// Event Trigger
 inputEl.addEventListener("keydown", inputChange);
 inputEl.addEventListener("keydown", bodyWindowChange);
 timeEl.addEventListener("click", bodyWindowPress);
+weatherEl.addEventListener("click", bodyWindowWeather);
