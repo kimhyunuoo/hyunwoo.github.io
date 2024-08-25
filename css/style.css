@@ -23,6 +23,7 @@ body {
 }
 
 .form_input__container {
+  opacity: 1;
   display: flex;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
@@ -33,24 +34,48 @@ body {
   border-radius: 10px;
   padding: 10px;
 }
-
+.form_input__container.trans {
+  display: none;
+}
 .material-symbols-outlined {
   margin-right: 5px;
-  color: #888888;
+  color: rgba(255, 255, 255, 0.5);
   font-size: 35px;
 }
 
 .form_input__whatName {
   font-size: 22px;
-  color: #9a9a9a;
+  color: #000;
   flex: 1;
   border: none;
   outline: none;
   background-color: transparent;
   padding: 10px 10px;
 }
+.push {
+}
 .form_input__whatName::placeholder {
-  color: #dadada;
+  color: rgba(255, 255, 255, 0.5);
+}
+.output {
+  font-size: 80px;
+  font-weight: 700;
+  transform: translate(0, 0);
+  transition: transform 1s;
+}
+.outputValue {
+  font-size: 24px;
+  font-weight: 300;
+  transform: translate(0, 0);
+  transition: transform 1s;
+}
+.output.show {
+  transform: translate(130px, -20px);
+  color: #fff;
+}
+.outputValue.show {
+  transform: translate(-98px, 35px);
+  color: #fff;
 }
 /* DockBar section */
 .dockBar {

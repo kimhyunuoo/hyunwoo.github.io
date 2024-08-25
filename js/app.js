@@ -1,5 +1,8 @@
 // INPUT
 const inputEl = document.querySelector(".form_input__whatName");
+const inputContainerEl = document.querySelector(".form_input__container");
+const outPutEl = document.querySelector(".output");
+const outPutValueEl = document.querySelector(".outputValue");
 // TIME
 const timeEl = document.querySelector(".dockBar__time");
 const dockTimeScreenEl = document.querySelector(".dockBar_timeScreen");
@@ -17,6 +20,16 @@ function bodyWindowChange(event) {
         'url("../images/li-zhang-K-DwbsTXLIY-unsplash.jpg")';
       document.body.style.transition = ".5s";
     }
+  }
+}
+// input Change
+function inputChange(event) {
+  if (event.key === "Enter") {
+    inputContainerEl.classList.add("trans");
+    outPutEl.textContent = `Hello !`;
+    outPutEl.classList.add("show");
+    outPutValueEl.textContent = `${inputEl.value}님 반갑습니다.`;
+    outPutValueEl.classList.add("show");
   }
 }
 // TIME
@@ -42,6 +55,6 @@ function bodyWindowPress() {
 intervalId = setInterval(() => {
   dockTimeScreenEl.querySelector(".time-display").textContent = updateTime();
 }, 1000);
-
+inputEl.addEventListener("keydown", inputChange);
 inputEl.addEventListener("keydown", bodyWindowChange);
 timeEl.addEventListener("click", bodyWindowPress);
