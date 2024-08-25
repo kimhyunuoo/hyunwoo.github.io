@@ -1,4 +1,8 @@
+// INPUT
 const inputEl = document.querySelector(".form_input__whatName");
+// TIME
+const timeEl = document.querySelector(".dockBar__time");
+const dockTimeScreenEl = document.querySelector(".dockBar_timeScreen");
 
 // Background Change ---> input 연결
 let toggle = true;
@@ -15,4 +19,14 @@ function bodyWindowChange(event) {
     }
   }
 }
+function bodyWindowPress() {
+  dockTimeScreenEl.classList.toggle(".active");
+  if (dockTimeScreenEl.classList.contains(".active")) {
+    dockTimeScreenEl.classList.add("active");
+  } else {
+    dockTimeScreenEl.classList.remove("active");
+  }
+}
+
 inputEl.addEventListener("keydown", bodyWindowChange);
+timeEl.addEventListener("click", bodyWindowPress);

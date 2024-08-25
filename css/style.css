@@ -72,6 +72,12 @@ body {
   height: 60px;
   border-radius: 15px;
   margin: 0 10px;
+  border: none;
+}
+.dockBar .dockBar__time:hover,
+.dockBar .dockBar__weather:hover,
+.dockBar .dockBar__todolist:hover {
+  border: 2px solid #888888;
 }
 .dockBar .dockBar__time {
   background: url("../images/clock.svg");
@@ -91,4 +97,9 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   opacity: 0;
+  transition: 0.5s;
+}
+.dockBar_timeScreen.active {
+  opacity: 1;
+  transition: 0.5s;
 }
