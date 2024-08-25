@@ -19,14 +19,29 @@ function bodyWindowChange(event) {
     }
   }
 }
+// TIME
+function updateTime() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const seconds = now.getSeconds().toString().padStart(2, "0");
+  return `${hours}:${minutes}:${seconds}`;
+}
+// dockTimeScreen section
 function bodyWindowPress() {
   dockTimeScreenEl.classList.toggle(".active");
   if (dockTimeScreenEl.classList.contains(".active")) {
     dockTimeScreenEl.classList.add("active");
+    dockTimeScreenEl.innerHTML = `<div class="time-display">${updateTime()}</div>`;
   } else {
     dockTimeScreenEl.classList.remove("active");
+    dockTimeScreenEl.innerHTML = "";
   }
 }
+// Time update
+intervalId = setInterval(() => {
+  dockTimeScreenEl.querySelector(".time-display").textContent = updateTime();
+}, 1000);
 
 inputEl.addEventListener("keydown", bodyWindowChange);
 timeEl.addEventListener("click", bodyWindowPress);

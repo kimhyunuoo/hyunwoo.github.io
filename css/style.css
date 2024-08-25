@@ -100,6 +100,14 @@ body {
   transition: 0.5s;
 }
 .dockBar_timeScreen.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 1;
   transition: 0.5s;
+}
+.time-display {
+  font-size: 100px;
+  font-style: italic;
+  color: #fff;
 }
