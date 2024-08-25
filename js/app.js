@@ -10,7 +10,12 @@ const dockTimeScreenEl = document.querySelector(".dockBar_timeScreen");
 const weatherEl = document.querySelector(".dockBar__weather");
 const dockWeatherScreenEl = document.querySelector(".dockBar_weatherScreen");
 const API_KEY = "a3a5d593038ea39027a6962fdf659257";
-
+//TODOLIST
+const todoListEl = document.querySelector(".dockBar__todolist");
+const dockTodoListScreenEl = document.querySelector(".dockBar_todolistScreen");
+const toDoFormEl = document.querySelector(".toDoForm");
+const toDoInputEl = toDoFormEl.querySelector("input");
+const toDoListEl = document.querySelector(".toDoList");
 // Background Change ---> input 연결
 let toggle = true;
 function bodyWindowChange(event) {
@@ -94,9 +99,42 @@ function onGeoOk(position) {
 function onGeoError() {
   alert("Can't find you. No weather for you.");
 }
+
+function bodyWindowTodoList() {
+  dockTodoListScreenEl.classList.toggle(".active");
+  if (dockTodoListScreenEl.classList.contains(".active")) {
+    dockTodoListScreenEl.classList.add("active");
+  } else {
+    dockTodoListScreenEl.classList.remove("active");
+  }
+}
+function deleteToDo(event) {
+  const li = event.target.parentElement;
+  li.remove();
+}
+function printToDo(newToDoEl) {
+  const li = document.createElement("li");
+  const span = document.createElement("span");
+  span.innerText = newToDoEl;
+  const button = document.createElement("button");
+  button.innerText = "❌";
+  button.addEventListener("click", deleteToDo);
+  li.appendChild(span);
+  li.appendChild(button);
+  toDoListEl.appendChild(li);
+}
+function handleToDoSubmit(event) {
+  event.preventDefault();
+  const newToDoEl = toDoInputEl.value;
+  toDoInputEl.value = "";
+  printToDo(newToDoEl);
+}
+
 // Event Trigger
 inputEl.addEventListener("keydown", inputChange);
 inputEl.addEventListener("keydown", bodyWindowChange);
 timeEl.addEventListener("click", bodyWindowPress);
 weatherEl.addEventListener("click", bodyWindowWeather);
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
+todoListEl.addEventListener("click", bodyWindowTodoList);
+toDoFormEl.addEventListener("submit", handleToDoSubmit);
